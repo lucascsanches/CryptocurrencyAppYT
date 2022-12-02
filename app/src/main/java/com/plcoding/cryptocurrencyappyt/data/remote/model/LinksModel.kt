@@ -1,8 +1,8 @@
-package com.plcoding.cryptocurrencyappyt.data.remote.dto
+package com.plcoding.cryptocurrencyappyt.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class LinksDto(
+data class LinksModel(
     val explorer: List<String>,
     val facebook: List<String>,
     val reddit: List<String>,

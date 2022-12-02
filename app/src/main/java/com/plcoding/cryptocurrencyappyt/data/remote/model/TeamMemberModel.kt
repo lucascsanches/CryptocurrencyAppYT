@@ -1,6 +1,6 @@
-package com.plcoding.cryptocurrencyappyt.data.remote.dto
+package com.plcoding.cryptocurrencyappyt.data.remote.model
 
-import com.plcoding.cryptocurrencyappyt.domain.model.TeamMember
+import com.plcoding.cryptocurrencyappyt.domain.entity.TeamMember
 
 data class TeamMemberDto(
     val id: String,

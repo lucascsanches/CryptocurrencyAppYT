@@ -1,9 +1,9 @@
-package com.plcoding.cryptocurrencyappyt.data.remote.dto
+package com.plcoding.cryptocurrencyappyt.data.remote.model
 
 import com.google.gson.annotations.SerializedName
-import com.plcoding.cryptocurrencyappyt.domain.model.Coin
+import com.plcoding.cryptocurrencyappyt.domain.entity.Coin
 
-data class CoinDto(
+data class CoinModel(
     val id: String,
     @SerializedName("is_active")
     val isActive: Boolean,
@@ -15,7 +15,11 @@ data class CoinDto(
     val type: String
 )
 
-fun CoinDto.asCoin(): Coin {
+fun List<CoinModel>.asCoins(): List<Coin> {
+    return this.map { it.asCoin() }
+}
+
+fun CoinModel.asCoin(): Coin {
     return Coin(
         id = this.id,
         isActive = this.isActive,

@@ -1,9 +1,9 @@
-package com.plcoding.cryptocurrencyappyt.data.remote.dto
+package com.plcoding.cryptocurrencyappyt.data.remote.model
 
 import com.google.gson.annotations.SerializedName
-import com.plcoding.cryptocurrencyappyt.domain.model.CoinDetail
+import com.plcoding.cryptocurrencyappyt.domain.entity.CoinDetail
 
-data class CoinDetailDto(
+data class CoinDetailModel(
     val description: String,
     @SerializedName("development_status")
     val developmentStatus: String,
@@ -20,9 +20,9 @@ data class CoinDetailDto(
     val isNew: Boolean,
     @SerializedName("last_data_at")
     val lastDataAt: String,
-    val links: LinksDto,
+    val links: LinksModel,
     @SerializedName("links_extended")
-    val linksExtended: List<LinkExtendedDto>,
+    val linksExtended: List<LinkExtendedModel>,
     val logo: String,
     val message: String,
     val name: String,
@@ -39,10 +39,10 @@ data class CoinDetailDto(
     val tags: List<TagDto>,
     val team: List<TeamMemberDto>,
     val type: String,
-    val whitepaper: WhitepaperDto
+    val whitepaper: WhitepaperModel
 )
 
-fun CoinDetailDto.asCoinDetail() : CoinDetail {
+fun CoinDetailModel.asCoinDetail() : CoinDetail {
     return CoinDetail(
         coinId = this.id,
         name = this.name,

@@ -1,4 +1,4 @@
-package com.plcoding.cryptocurrencyappyt.domain.model
+package com.plcoding.cryptocurrencyappyt.domain.entity
 
 data class CoinDetail(
     val coinId: String,

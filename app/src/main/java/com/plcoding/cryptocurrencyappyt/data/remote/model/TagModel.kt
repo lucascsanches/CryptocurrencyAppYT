@@ -1,7 +1,7 @@
-package com.plcoding.cryptocurrencyappyt.data.remote.dto
+package com.plcoding.cryptocurrencyappyt.data.remote.model
 
 import com.google.gson.annotations.SerializedName
-import com.plcoding.cryptocurrencyappyt.domain.model.Tag
+import com.plcoding.cryptocurrencyappyt.domain.entity.Tag
 
 data class TagDto(
     @SerializedName("coin_counter")
