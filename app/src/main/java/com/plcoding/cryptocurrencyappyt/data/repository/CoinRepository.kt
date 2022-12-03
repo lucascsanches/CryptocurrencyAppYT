@@ -1,6 +1,6 @@
 package com.plcoding.cryptocurrencyappyt.data.repository
 
-import com.plcoding.cryptocurrencyappyt.common.Resource
+import com.plcoding.cryptocurrencyappyt.domain.entity.Resource
 import com.plcoding.cryptocurrencyappyt.data.remote.ICoinPaprikaApi
 import com.plcoding.cryptocurrencyappyt.data.remote.model.asCoinDetail
 import com.plcoding.cryptocurrencyappyt.data.remote.model.asCoins
