@@ -12,4 +12,8 @@ interface ICoinPaprikaApi {
 
     @GET("v1/coins/{coinId}")
     suspend fun getCoinDetail(@Path(value = "coinId") coinId: String): CoinDetailModel
+
+    companion object {
+        const val BASE_URL = "https://api.coinpaprika.com/"
+    }
 }
