@@ -10,7 +10,7 @@ class GetCoinsUseCase @Inject constructor(
     private val coinRepository: ICoinRepository
 ) {
 
-    suspend operator fun invoke(): Flow<Resource<List<Coin>>> {
+    operator fun invoke(): Flow<Resource<List<Coin>>> {
         return coinRepository.getCoins()
     }
 }
