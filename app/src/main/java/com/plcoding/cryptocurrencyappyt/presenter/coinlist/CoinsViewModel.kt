@@ -3,12 +3,14 @@ package com.plcoding.cryptocurrencyappyt.presenter.coinlist
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.plcoding.cryptocurrencyappyt.domain.entity.Coin
 import com.plcoding.cryptocurrencyappyt.domain.entity.Resource
 import com.plcoding.cryptocurrencyappyt.domain.usecase.GetCoinsUseCase
 import com.plcoding.cryptocurrencyappyt.presenter.state.PageState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,15 +21,19 @@ class CoinsViewModel @Inject constructor(
     private val _coinsState = mutableStateOf(CoinsState())
     val coinsState: State<CoinsState> = _coinsState
 
-    suspend fun getCoins() {
-        getCoinsUseCase().collect { result ->
+    init {
+        getCoins()
+    }
+
+    private fun getCoins() {
+        getCoinsUseCase().onEach { result ->
             _coinsState.value = when (result) {
                 is Resource.Loading -> getLoadingCoinsState()
                 is Resource.NoInternet -> getNoInternetCoinsState()
                 is Resource.ServerError -> getServerErrorCoinsState()
                 is Resource.Success -> getSuccessCoinsState(result.data)
             }
-        }
+        }.launchIn(viewModelScope)
     }
 
     private fun getLoadingCoinsState(): CoinsState {
